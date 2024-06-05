@@ -8,8 +8,19 @@ namespace Krolivets_IKM_722a_course_project
 {
     internal class MajorWork
     {
+        //Поля
+        private System.DateTime TimeBegin; // час початку роботи програми
         private string Data; //вхідні дані
         private string Result; //поле результату
+        //Методи
+        public void SetTime() // метод запису часу початку роботи програми
+        {
+            this.TimeBegin = System.DateTime.Now;
+        }
+        public System.DateTime GetTime() // Метод отримання часу завершення програми
+        {
+            return this.TimeBegin;
+        }
         public void Write(string D)
         {
             this.Data = D;
