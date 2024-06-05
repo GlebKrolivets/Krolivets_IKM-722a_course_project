@@ -101,9 +101,10 @@ namespace Krolivets_IKM_722a_course_project
 
         private void зберегтіЯкToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (sfdSave.ShowDialog() == DialogResult.OK) // Виклик діалогового вікна збереження файлу
+            if (sfdSave.ShowDialog() == DialogResult.OK) // Виклик діалогу збереження файлу
             {
-                MajorObject.WriteSaveFileName(sfdSave.FileName); // написання імені файлу
+                MajorObject.WriteSaveFileName(sfdSave.FileName); // Запис імені файлу для збереження
+                MajorObject.Generator();
                 MajorObject.SaveToFile(); // метод збереження в файл
             }
         }
@@ -140,6 +141,29 @@ namespace Krolivets_IKM_722a_course_project
                 }
             }
             MessageBox.Show(disk, "Накопичувачі");
+        }
+
+        private void зберегтиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MajorObject.SaveFileNameExists()) // задане ім’я файлу існує?
+                MajorObject.SaveToFile(); // зберегти дані в файл
+            else
+                зберегтіЯкToolStripMenuItem_Click(sender, e); //зберегти дані в "ім'я файлу", яке буде введене у форму для збереження
+        }
+
+        private void новийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MajorObject.NewRec();
+            tbInput.Clear();// очистити вміст тексту
+            label1.Text = "";
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MajorObject.Modify)
+                if (MessageBox.Show("Дані не були збережені. Продовжити вихід?", "УВАГА",
+                MessageBoxButtons.YesNo) == DialogResult.No)
+                    e.Cancel = true; // припинити закриття
         }
     }
 }
