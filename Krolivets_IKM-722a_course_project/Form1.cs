@@ -16,11 +16,30 @@ namespace Krolivets_IKM_722a_course_project
     {
         private bool Mode;//Режим дозвілу або заборони
         private MajorWork MajorObject;//Створення об'єкта классу MajorWork 
+
+        ToolStripLabel dateLabel;
+        ToolStripLabel timeLabel;
+        ToolStripLabel infoLabel;
+        Timer timer;
         public Form1()
         {
             InitializeComponent();
+            infoLabel = new ToolStripLabel();
+            infoLabel.Text = "Текущие дата и время:";
+            dateLabel = new ToolStripLabel();
+            timeLabel = new ToolStripLabel();
+            statusStrip1.Items.Add(infoLabel);
+            statusStrip1.Items.Add(dateLabel);
+            statusStrip1.Items.Add(timeLabel);
+            timer = new Timer() { Interval = 1000 };
+            timer.Tick += timer_Tick;
+            timer.Start();
         }
-
+        void timer_Tick(object sender, EventArgs e)
+        {
+            dateLabel.Text = DateTime.Now.ToLongDateString();
+            timeLabel.Text = DateTime.Now.ToLongTimeString();
+        }
         private void tClock_Tick(object sender, EventArgs e)
         {
             tClock.Stop();
@@ -37,6 +56,9 @@ namespace Krolivets_IKM_722a_course_project
             MajorObject.SetTime();
             MajorObject.Modify =false;// заборона запису
             this.Mode = true;
+
+            toolTip1.SetToolTip(bSearch, "Натисніть на кнопку для пошуку"); 
+            toolTip1.IsBalloon = true;
         }
 
         private void bStart_Click(object sender, EventArgs e)
@@ -96,7 +118,9 @@ namespace Krolivets_IKM_722a_course_project
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             About A = new About();
+            A.progressBar1.Hide();
             A.ShowDialog();
+
         }
 
         private void зберегтіЯкToolStripMenuItem_Click(object sender, EventArgs e)
@@ -181,6 +205,11 @@ namespace Krolivets_IKM_722a_course_project
         }
 
         private void dgwOpen_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }
