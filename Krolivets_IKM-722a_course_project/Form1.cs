@@ -12,6 +12,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Collections;
 using System.IO.Ports;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace Krolivets_IKM_722a_course_project
 {
     public partial class Form1 : Form
@@ -100,19 +101,33 @@ namespace Krolivets_IKM_722a_course_project
 
         private void tbInput_KeyPress(object sender, KeyPressEventArgs e)
         {
+
             tClock.Stop();
             tClock.Start();
-            if ((e.KeyChar>='0') &(e.KeyChar <= '9') |(e.KeyChar ==(char)8))
+
+            char inputChar = e.KeyChar;
+            bool isValidChar = (inputChar >= 'А' && inputChar <= 'я') ||
+                               (inputChar == 'ї') || (inputChar == 'є') ||
+                               (inputChar == 'ґ') || (inputChar == 'і') ||
+                               (inputChar == 'Ї') || (inputChar == 'Є') ||
+                               (inputChar == 'Ґ') || (inputChar == 'І') ||
+                               (inputChar == '.') || (inputChar == ',') ||
+                               (inputChar == ' ') ||
+                               (inputChar == (char)8) || (inputChar == 0);
+
+            if (isValidChar)
             {
                 return;
             }
             else
             {
+
                 tClock.Stop();
-                MessageBox.Show("Некоректний символ", "Помилка");
+                MessageBox.Show("Неправильний символ", "Помилка");
                 tClock.Start();
-                e.KeyChar=(char)0;
+                e.KeyChar = (char)0;
             }
+
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)

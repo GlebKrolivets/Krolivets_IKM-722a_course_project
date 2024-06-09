@@ -54,16 +54,28 @@ namespace Krolivets_IKM_722a_course_project
         }
         public void Task() // метод реалізації програмного завдання
         {
-            if (this.Data.Length> 5)
+            string[] dataParts = Data.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if (dataParts.Length < 10)
             {
-                this.Result = Convert.ToString(true);
-
+                string newString = "";
+                newString += Data[Data.Length-2];
+                if (Data[Data.Length-1]!='.')
+                {
+                    MessageBox.Show("Текст повинен закінчуватися точкою.");
+                    return;
+                }
+                for (int i = 1; i < Data.Length-2; i++)
+                {
+                    newString += Data[i];
+                }
+                newString+=Data[0];
+                this.Result = newString;
+                this.Modify = true; // Дозвіл запису
             }
             else
             {
-                this.Result = Convert.ToString(false);
+                MessageBox.Show("Треба не більше 10 слів.","Увага!");
             }
-            this.Modify = true; // Дозвіл запису
         }
         public void SaveToFile() // Запис даних до файлу
         {
