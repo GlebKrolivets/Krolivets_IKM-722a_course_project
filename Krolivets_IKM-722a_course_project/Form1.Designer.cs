@@ -117,7 +117,7 @@
             // tClock
             // 
             this.tClock.Enabled = true;
-            this.tClock.Interval = 10000;
+            this.tClock.Interval = 25000;
             this.tClock.Tick += new System.EventHandler(this.tClock_Tick);
             // 
             // menuStrip1

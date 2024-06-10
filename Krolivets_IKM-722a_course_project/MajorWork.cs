@@ -56,32 +56,69 @@ namespace Krolivets_IKM_722a_course_project
         {
             if (string.IsNullOrEmpty(Data))
             {
-                MessageBox.Show("Данные не введены.");
+                MessageBox.Show("Дані не введені.");
                 return;
             }
-            string[] dataParts = Data.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            if (dataParts.Length < 10)
+
+            if (Data.Length < 3)
             {
-                string newString = "";
-                newString += Data[Data.Length-2];
-                if (Data[Data.Length-1]!='.')
-                {
-                    MessageBox.Show("Текст повинен закінчуватися точкою.");
-                    return;
-                }
-                for (int i = 1; i < Data.Length-2; i++)
+                MessageBox.Show("Дані надто короткі.");
+                return;
+            }
+
+            string trimmedData = Data.Trim();
+            if (!trimmedData.EndsWith("."))
+            {
+                MessageBox.Show("Текст повинен закінчуватися точкою.");
+                return;
+            }
+
+            string[] words = trimmedData.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            if (words.Length > 10)
+            {
+                MessageBox.Show("Треба не більше 10 слів.", "Увага!");
+                return;
+            }
+
+            // Визначаємо першу і останню (перед крапкою) дійсні літери
+            int firstCharIndex = 0;
+            while (firstCharIndex < Data.Length && char.IsWhiteSpace(Data[firstCharIndex]))
+            {
+                firstCharIndex++;
+            }
+
+            int lastCharIndex = Data.Length - 2; // передостанній символ, бо останній - крапка
+            while (lastCharIndex >= 0 && char.IsWhiteSpace(Data[lastCharIndex]))
+            {
+                lastCharIndex--;
+            }
+
+            if (firstCharIndex >= lastCharIndex)
+            {
+                MessageBox.Show("Некоректний ввід.");
+                return;
+            }
+
+            char firstChar = Data[firstCharIndex];
+            char lastCharBeforeDot = Data[lastCharIndex];
+
+            // Формуємо новий рядок, замінюючи першу і останню літери
+            string newString = "";
+            newString += lastCharBeforeDot;
+            for (int i = 1; i < Data.Length - 2; i++)
+            {
+                if (i != firstCharIndex && i != lastCharIndex)
                 {
                     newString += Data[i];
                 }
-                newString+=Data[0];
-                this.Result = newString;
-                this.Modify = true; // Дозвіл запису
             }
-            else
-            {
-                MessageBox.Show("Треба не більше 10 слів.","Увага!");
-            }
+            newString += firstChar;
+            newString += '.'; // Додаємо крапку в кінці
+
+            this.Result = newString;
+            this.Modify = true; // Дозвіл запису
         }
+
         public void SaveToFile() // Запис даних до файлу
         {
             if (!this.Modify)
