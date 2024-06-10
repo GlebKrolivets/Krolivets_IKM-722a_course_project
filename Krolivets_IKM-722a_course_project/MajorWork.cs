@@ -54,6 +54,11 @@ namespace Krolivets_IKM_722a_course_project
         }
         public void Task() // метод реалізації програмного завдання
         {
+            if (string.IsNullOrEmpty(Data))
+            {
+                MessageBox.Show("Данные не введены.");
+                return;
+            }
             string[] dataParts = Data.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
             if (dataParts.Length < 10)
             {
