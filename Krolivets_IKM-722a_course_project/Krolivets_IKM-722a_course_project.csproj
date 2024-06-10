@@ -107,5 +107,11 @@
   <ItemGroup>
     <None Include="Resources\71+hJ2AoU-L._AC_UF894,1000_QL80_.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\69076132-нейтральная-бесшовные-линейный-шаблон-бесшовное-геометрическая-outline-богато-урожай-процветай-фон.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1682231261_kartinki-pibig-info-p-neitralnaya-fonovaya-kartinka-arti-krasivo-2.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

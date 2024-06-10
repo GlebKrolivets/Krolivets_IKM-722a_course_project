@@ -63,6 +63,27 @@ namespace Krolivets_IKM_722a_course_project.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1682231261_kartinki_pibig_info_p_neitralnaya_fonovaya_kartinka_arti_krasivo_2 {
+            get {
+                object obj = ResourceManager.GetObject("1682231261_kartinki-pibig-info-p-neitralnaya-fonovaya-kartinka-arti-krasivo-2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _69076132_нейтральная_бесшовные_линейный_шаблон_бесшовное_геометрическая_outline_богато_урожай_процветай_фон {
+            get {
+                object obj = ResourceManager.GetObject("69076132-нейтральная-бесшовные-линейный-шаблон-бесшовное-геометрическая-outline-б" +
+                        "огато-урожай-процветай-фон", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _71_hJ2AoU_L__AC_UF894_1000_QL80_ {
             get {
                 object obj = ResourceManager.GetObject("71+hJ2AoU-L._AC_UF894,1000_QL80_", resourceCulture);
