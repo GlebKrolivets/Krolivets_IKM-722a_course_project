@@ -286,14 +286,14 @@
             // 
             // sfdSave
             // 
-            this.sfdSave.DefaultExt = "CuM";
-            this.sfdSave.Filter = "робочі файли | *.CuM | Усі файли | *.*";
+            this.sfdSave.DefaultExt = "vici";
+            this.sfdSave.Filter = "робочі файли | *.vici | Усі файли | *.*";
             // 
             // ofdOpen
             // 
-            this.ofdOpen.DefaultExt = "CuM";
+            this.ofdOpen.DefaultExt = "vici";
             this.ofdOpen.FileName = "openFileDialog1";
-            this.ofdOpen.Filter = "робочі файли | *.CuM | Усі файли | *.*";
+            this.ofdOpen.Filter = "робочі файли | *.vici | Усі файли | *.*";
             // 
             // tabControl1
             // 
